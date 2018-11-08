@@ -1,6 +1,12 @@
 workspace(name = "greeter")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
+git_repository(
+    name = "com_google_absl",
+    remote = "https://github.com/abseil/abseil-cpp",
+    tag = "20180600"
+)
+
 http_archive(
     name = "com_google_protobuf",
     sha256 = "cef7f1b5a7c5fba672bec2a319246e8feba471f04dcebfe362d55930ee7c1c30",

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "common/protos/entity.proto";
+
+package server.protos;
+
+service EntitiesApi {
+    rpc GetEntity (EntityQueryRequest) returns (common.protos.Entity) {}
+    rpc AddEntity (common.protos.Entity) returns (EntityUpdatedResponse) {}
+}
+
+message EntityQueryRequest {
+  string id = 1;
+}
+
+message EntityUpdatedResponse {
+  bool isSuccess = 1;
+  string message = 2;
+}

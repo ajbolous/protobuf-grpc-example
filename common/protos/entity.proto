@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package common.protos;
+
+message Entity {
+    string id = 1;
+    string name = 2;
+    string address = 3;
+    string phone = 4;
+    string description = 5;
+    string password = 6;
+  }

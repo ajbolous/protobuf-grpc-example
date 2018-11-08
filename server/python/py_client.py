@@ -1,6 +1,6 @@
 from grpc import Channel, insecure_channel
-from greeter.proto.greet_pb2 import GreetReply, GreetRequest
-from greeter.proto.greet_pb2_grpc import GreeterStub
+from greeter.protos.greet_pb2 import GreetReply, GreetRequest
+from greeter.protos.greet_pb2_grpc import GreeterStub
 
 channel = insecure_channel('localhost:50051')
 stub = GreeterStub(channel)

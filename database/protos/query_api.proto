@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "common/protos/entity.proto";
+
+package database.protos;
+
+service QueryApi {
+  rpc Query (QueryRequest) returns (common.protos.Entity) {}
+}
+
+message QueryRequest {
+  string id = 1;
+  string name = 2;
+}
