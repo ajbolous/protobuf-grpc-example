@@ -24,13 +24,11 @@ bind(
     actual = "@com_google_protobuf//:protoc_lib"
 )
 
-
 http_archive(
     name = "build_stack_rules_proto",
     urls = ["https://github.com/stackb/rules_proto/archive/4c2226458203a9653ae722245cc27e8b07c383f7.tar.gz"],
     strip_prefix = "rules_proto-4c2226458203a9653ae722245cc27e8b07c383f7",
 )
-
 
 # CPP deps for proto compilation
 load("@build_stack_rules_proto//cpp:deps.bzl", "cpp_grpc_library")
@@ -38,7 +36,6 @@ cpp_grpc_library()
 
 load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
 grpc_deps()
-
 
 # Python Deps for proto compilation
 

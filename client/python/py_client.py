@@ -13,9 +13,11 @@ stub = EntitiesApiStub(channel)
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index():
     entity = MessageToJson(stub.GetEntity(EntityQueryRequest(id='1')))
     return json.dumps(entity, indent=4)
+
 
 app.run()
