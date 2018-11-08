@@ -1,10 +1,20 @@
-#include <iostream>
-#include <fstream>
-
 #include "db_core.h"
 
 namespace core
 {
+
+DatabaseCore::DatabaseCore(const std::string &dbName_) : dbName(dbName_)
+{
+  logging::Text("Starting a new Database Core, Workspace: " + dbName);
+  LoadDatabaseEnttities();
+}
+
+DatabaseCore::DatabaseCore(const std::string &&dbName_) : dbName(dbName_)
+{
+  logging::Text("Starting a new Database Core, Workspace: " + dbName);
+  LoadDatabaseEnttities();
+}
+
 void DatabaseCore::LoadDatabaseEnttities()
 {
   std::fstream input(dbName, std::ios::in | std::ios::binary);

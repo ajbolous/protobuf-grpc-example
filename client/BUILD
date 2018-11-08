@@ -5,7 +5,7 @@ load("@build_stack_rules_proto//python:python_grpc_library.bzl", "python_grpc_li
 cc_binary(
     name = "client",
     srcs = ["src/client.cc"],
-    deps = ["//server:protos_cpp", "//common:logging"]
+    deps = ["//server:protos_cpp", "//common:utils"]
 )
 
 # Python GRPC deps and client binary

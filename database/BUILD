@@ -14,7 +14,7 @@ cc_library(
     name = "core",
     srcs = glob(["src/core/*.cc"]),
     hdrs = glob(["src/core/*.h"]),
-    deps = [":protos_cpp"]
+    deps = [":protos_cpp", "//common:utils"]
 )
 
 cpp_grpc_library(
@@ -25,8 +25,8 @@ cpp_grpc_library(
 
 cc_binary(
     name = "server",
-    srcs = ["src/server.cc"] + glob(["src/stubs/*.impl.h"]),
-    deps = [":protos_cpp", ":core"],
+    srcs = ["src/server.cc"] + glob(["src/stubs/*.impl.h", "src/stubs/*.impl.cc"]),
+    deps = [":protos_cpp", ":core", "//common:utils"],
 )
 
 cc_binary(

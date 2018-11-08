@@ -1,9 +1,10 @@
+#ifndef DATABASE_STUBS_QUERY_API_IMPL_H
+#define DATABASE_STUBS_QUERY_API_IMPL_H
+
 #include <iostream>
-#include <grpc/grpc.h>
-
 #include "database/protos/query_api.grpc.pb.h"
-
-#include "../core/db_core.h"
+#include "database/src/core/db_core.h"
+#include "common/logging/logging.h"
 
 class QueryApiImpl final : public database::protos::QueryApi::Service
 {
@@ -11,17 +12,8 @@ class QueryApiImpl final : public database::protos::QueryApi::Service
     core::DatabaseCore *core = nullptr;
 
   public:
-    QueryApiImpl(core::DatabaseCore *core_) : core(core_) {}
-
-    grpc::Status Query(grpc::ServerContext *context, const database::protos::QueryRequest *request, common::protos::Entity *response) override
-    {
-        std::cout << "[Query] Querying for ID: " << request->id();
-        if (core->GetEntityById(request->id(), response))
-        {
-            std::cout << "\t Found Entity: " << response->name() << std::endl;
-            return grpc::Status::OK;
-        }
-        std::cout << "\t \033[1;31m Entity Not Found" << "\033[0m" << std::endl;
-        return grpc::Status::CANCELLED;
-    }
+    QueryApiImpl(core::DatabaseCore *core_);
+    grpc::Status Query(grpc::ServerContext *context, const database::protos::QueryRequest *request, common::protos::Entity *response) override;
 };
+
+#endif
