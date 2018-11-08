@@ -11,9 +11,9 @@ void InitServerData()
 {
 	std::fstream output("db.buf", std::ios::out | std::ios::binary);
 	common::protos::Entity e;
-	e.set_name("Bolous");
+	e.set_name("Bolous2");
 	e.set_id("1");
-	e.set_password("123");
+	e.set_password("12356");
 	if (!e.SerializeToOstream(&output))
 	{
 		std::cerr << "Failed to write address book." << std::endl;
