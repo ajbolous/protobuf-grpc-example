@@ -32,5 +32,5 @@ cc_binary(
 cc_binary(
     name = "tester",
     srcs = ["src/test.cc"],
-    deps = [":protos_cpp"]
+    deps = [":protos_cpp", "//common:utils"]
 )
