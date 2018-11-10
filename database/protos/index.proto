@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package database.protos;
+
+message IndexEntry {
+    string file = 1;
+  }
+
+
+message DatabaseIndex {
+    int32 currentCount = 1;
+
+    map<string, IndexEntry> indices = 2;
+}

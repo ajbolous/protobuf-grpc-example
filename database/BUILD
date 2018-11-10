@@ -4,7 +4,7 @@ load("@build_stack_rules_proto//cpp:cpp_grpc_library.bzl", "cpp_grpc_library")
 
 proto_library(
     name = "protos",
-    srcs = ["protos/query_api.proto"],
+    srcs = glob(["protos/*.proto"]),
     deps = ["//common:protos"]
 )
 

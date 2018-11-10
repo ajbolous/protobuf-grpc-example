@@ -6,9 +6,15 @@ package database.protos;
 
 service QueryApi {
   rpc Query (QueryRequest) returns (common.protos.Entity) {}
+  rpc Insert (common.protos.Entity) returns (UpdateResponse) {}
 }
 
 message QueryRequest {
   string id = 1;
   string name = 2;
+}
+
+message UpdateResponse {
+  string id = 1;
+  bool status = 2;
 }

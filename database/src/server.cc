@@ -18,10 +18,14 @@ void InitServerData()
 int main(int argc, char **argv)
 {
 	std::string server_address("localhost:60060");
-	std::string db_workspace("db.buf");
+	std::string db_workspace("db");
 	
 	InitServerData();
 	core::DatabaseCore dbCore(db_workspace);
+	common::protos::Entity entity;
+	entity.set_id("123232-123");
+	entity.set_name("bolous");
+	dbCore.WriteEntity(entity);
 	manager::ServerManager server(server_address);
 	server.AddService(new QueryApiImpl(&dbCore), "QueryApiImpl");
 	server.Start();

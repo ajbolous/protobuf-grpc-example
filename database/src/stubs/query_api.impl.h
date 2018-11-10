@@ -14,6 +14,7 @@ class QueryApiImpl final : public database::protos::QueryApi::Service
   public:
     QueryApiImpl(core::DatabaseCore *core_);
     grpc::Status Query(grpc::ServerContext *context, const database::protos::QueryRequest *request, common::protos::Entity *response) override;
+    grpc::Status Insert(grpc::ServerContext *context, const common::protos::Entity* request, database::protos::UpdateResponse* response) override;
 };
 
 #endif

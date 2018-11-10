@@ -1,5 +1,6 @@
 
 #include "logging.h"
+#include <ctime>
 
 enum Color
 {
@@ -18,8 +19,22 @@ std::map<int, std::string> colors = {
     {Color::GREEN, "\033[1;32m"},
 };
 
+std::string getTimeStamp()
+{
+    time_t rawtime;
+    struct tm *timeinfo;
+    char buffer[80];
+
+    time(&rawtime);
+    timeinfo = localtime(&rawtime);
+
+    strftime(buffer, sizeof(buffer), "%d-%m-%Y %H:%M:%S ", timeinfo);
+    return std::string(buffer);
+}
+
 void Print(std::string &text, Color color, bool newLine = true)
 {
+    std::cout << getTimeStamp();
     std::cout << colors.at(color);
     std::cout << text;
     if (color != Color::DEFAULT)
