@@ -14,14 +14,14 @@ namespace manager
 {
 class ServerManager
 {
-    std::string address;
-    grpc::ServerBuilder builder;
-    std::unique_ptr<grpc::Server> server;
+  std::string address;
+  grpc::ServerBuilder builder;
+  std::unique_ptr<grpc::Server> server;
 
-  public:
-    ServerManager(std::string &address_);
-    void AddService(grpc::Service *service, std::string &&name);
-    void Start();
+public:
+  ServerManager(std::string &address_);
+  void AddService(grpc::Service *service, std::string &&name);
+  void Start();
 };
 } // namespace manager
 

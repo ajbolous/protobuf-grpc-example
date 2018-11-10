@@ -2,19 +2,19 @@
 
 manager::ServerManager::ServerManager(std::string &address_) : address(address_)
 {
-    logging::Text("[Server] - Starting a new Server, Address: " + address);
-    logging::Text("[Server] - Connecting to backend database, Address: " + address);
+    logging::Info("[Server] - Starting a new gRPC Server, Address: " + address);
     builder.AddListeningPort(address, grpc::InsecureServerCredentials());
 }
 
 void manager::ServerManager::AddService(grpc::Service *service, std::string &&name)
 {
-    logging::Info("\t[Server] - Serving a new Stub " + name);
+    logging::Info("[Server] - Serving a new Stub API " + name);
     builder.RegisterService(service);
 }
 
 void manager::ServerManager::Start()
 {
+    logging::Info("[Server] - Starting server and waiting for connections..");
     std::unique_ptr<grpc::Server> server = builder.BuildAndStart();
     server->Wait();
 }
