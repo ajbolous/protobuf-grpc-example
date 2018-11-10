@@ -4,10 +4,10 @@
 
 #include <iostream>
 #include <string>
+#include <map>
 
 namespace logging
 {
-
 void Text(std::string &&text, bool newLine = true);
 void Info(std::string &&text, bool newLine = true);
 void Error(std::string &&text, bool newLine = true);

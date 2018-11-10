@@ -10,25 +10,20 @@ enum Color
     YELLOW
 };
 
+std::map<int, std::string> colors = {
+    {Color::DEFAULT, ""},
+    {Color::RED, "\033[1;31m"},
+    {Color::BLUE, "\033[1;34m"},
+    {Color::YELLOW, "\033[1;33m"},
+    {Color::GREEN, "\033[1;32m"},
+};
+
 void Print(std::string &text, Color color, bool newLine = true)
 {
-    switch (color)
-    {
-    case Color::RED:
-        std::cout << "\033[1;31m" << text << "\033[0m";
-        break;
-    case Color::BLUE:
-        std::cout << "\033[1;34m" << text << "\033[0m";
-        break;
-    case Color::YELLOW:
-        std::cout << "\033[1;33m" << text << "\033[0m";
-        break;
-    case Color::GREEN:
-        std::cout << "\033[1;32m" << text << "\033[0m";
-        break;
-    default:
-        std ::cout << text;
-    }
+    std::cout << colors.at(color);
+    std::cout << text;
+    if (color != Color::DEFAULT)
+        std::cout << "\033[0m";
     if (newLine)
         std::cout << std::endl;
 }

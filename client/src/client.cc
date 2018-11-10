@@ -24,7 +24,7 @@ int main(int argc, char **argv)
             logging::Success("Found Entity: (" + response.name() + ", " + response.password() + ")");
         else
         {
-            logging::Error("[ERROR] Entity Not Found: ", false);
+            logging::Error("Entity Not Found: ", false);
             logging::Warning(status.error_message());
         }
     }
