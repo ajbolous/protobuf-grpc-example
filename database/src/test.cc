@@ -5,11 +5,11 @@
 
 #include "database/protos/query_api.grpc.pb.h"
 #include "common/logging/logging.h"
+#include "common/protos/entity.pb.h"
 
 common::protos::Entity CreateTestEntity()
 {
     common::protos::Entity entity;
-
     entity.set_id("entity id");
     entity.set_name("bolous-test");
     entity.set_address("address test");

@@ -12,6 +12,4 @@ int main(int argc, char **argv)
 	manager::ServerManager server(server_address);
 	server.AddService(new QueryApiImpl(&dbCore), "QueryApiImpl");
 	server.Start();
-
-	return 0;
 }

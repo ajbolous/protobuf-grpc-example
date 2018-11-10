@@ -19,7 +19,7 @@ cpp_grpc_library(
 
 cc_binary(
     name = "server",
-    srcs = ["src/server.cc"] + glob(["src/stubs/*.impl.h"]),
+    srcs = glob(["src/**/*.cc", "src/**/*.h"]),
     deps = [":protos_cpp", "//database:protos_cpp", "//common:utils"],
     linkopts = ["-lsqlite3"]
 )
